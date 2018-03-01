@@ -11,10 +11,10 @@ api接口层，需要将API打包成jar包，在下面两个工程里定义。�
 
 provide服务提供者，对外提供服务接口。这个项目里提供者即使提供者也是消费者。
 
-`#mvn启动  spring-boot:run`
+`#mvn启动  mvn spring-boot:run`
 
 ## pisces-consumer
 
 provide服务消费者，消费提供者提供的接口。
 
-`#mvn启动  spring-boot:run`
+`#mvn启动  mvn spring-boot:run`
