@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.hejia</groupId>
+	<artifactId>pisces-api</artifactId>
+	<version>lastest</version>
+	<packaging>jar</packaging>
+
+	<name>Dubbo::Service</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<profiles>
+       <profile>  
+           <!-- 本地开发环境 -->  
+           <id>development</id>  
+           <properties>  
+               <profiles.active>development</profiles.active>  
+               <deploy.url>http://host:port/manager/text</deploy.url>  
+           </properties>  
+           <activation>  
+               <activeByDefault>true</activeByDefault>  
+           </activation>  
+       </profile>  
+       <profile>  
+           <!-- 测试环境 -->  
+           <id>integration</id>  
+           <properties>  
+               <profiles.active>integration</profiles.active>  
+               <deploy.url>http://host:port/manager/text</deploy.url>  
+           </properties>  
+       </profile>  
+       <profile>  
+           <!-- 生产环境 -->  
+           <id>production</id>  
+           <properties>  
+               <profiles.active>production</profiles.active>  
+               <deploy.url>http://host:port/manager/text</deploy.url>  
+           </properties>  
+       </profile>
+   </profiles>
+   
+   <build>
+		<resources>
+           <resource>
+               <directory>src/main/resources</directory>
+               <excludes>
+                   <exclude>integration/*</exclude>
+                   <exclude>production/*</exclude>
+                   <exclude>development/*</exclude>
+               </excludes>
+           </resource>
+           <resource>
+               <directory>src/main/resources/${profiles.active}</directory>
+           </resource>
+       </resources>
+       <plugins>
+       		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>7</source>
+					<target>7</target>
+				</configuration>
+			</plugin>
+       </plugins>
+   </build>
+</project>

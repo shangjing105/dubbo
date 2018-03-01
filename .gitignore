@@ -1,0 +1,20 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+### IntelliJ IDEA ###
+target/
+.idea
+*.iws
+*.iml
+*.ipr
+
+# ignore eclipse files
+.project
+.classpath
+.settings
+.metadata
+/.DS_Store
